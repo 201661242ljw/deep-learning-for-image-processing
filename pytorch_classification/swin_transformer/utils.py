@@ -10,7 +10,7 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 
-def read_split_data(root: str, val_rate: float = 0.2):
+def read_split_data_(root: str, val_rate: float = 0.2):
     random.seed(0)  # 保证随机结果可复现
     assert os.path.exists(root), "dataset root: {} does not exist.".format(root)
 
@@ -76,6 +76,25 @@ def read_split_data(root: str, val_rate: float = 0.2):
         plt.title('flower class distribution')
         plt.show()
 
+    return train_images_path, train_images_label, val_images_path, val_images_label
+
+
+
+def read_split_data(root):
+    train_images_path = []  # 存储训练集的所有图片路径
+    train_images_label = []  # 存储训练集图片对应索引信息
+    val_images_path = []  # 存储验证集的所有图片路径
+    val_images_label = []  # 存储验证集图片对应索引信息
+    src_dir = os.path.join(root, "train")
+    for src_dir_1 in os.listdir(src_dir):
+        for file_name in os.listdir(os.path.join(src_dir, src_dir_1)):
+            train_images_path.append(os.path.join(src_dir, src_dir_1, file_name))
+            train_images_label.append(int(src_dir_1))
+    src_dir = os.path.join(root, "val")
+    for src_dir_1 in os.listdir(src_dir):
+        for file_name in os.listdir(os.path.join(src_dir, src_dir_1)):
+            val_images_path.append(os.path.join(src_dir, src_dir_1, file_name))
+            val_images_label.append(int(src_dir_1))
     return train_images_path, train_images_label, val_images_path, val_images_label
 
 
