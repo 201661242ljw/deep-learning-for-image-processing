@@ -79,7 +79,6 @@ def read_split_data_(root: str, val_rate: float = 0.2):
     return train_images_path, train_images_label, val_images_path, val_images_label
 
 
-
 def read_split_data(root):
     train_images_path = []  # 存储训练集的所有图片路径
     train_images_label = []  # 存储训练集图片对应索引信息
