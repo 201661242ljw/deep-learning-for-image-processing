@@ -71,13 +71,13 @@ def main():
 
                 s = s + "{} {} {}\n".format(img_path, src_dir_1, predict_cla)
 
-                if src_dir_1 == "0" and predict_cla == "0":
+                if str(src_dir_1) == "0" and str(predict_cla) == "0":
                     num_00 += 1
-                if src_dir_1 == "0" and predict_cla == "1":
+                elif str(src_dir_1) == "0" and str(predict_cla) == "1":
                     num_01 += 1
-                if src_dir_1 == "1" and predict_cla == "0":
+                elif str(src_dir_1) == "1" and str(predict_cla) == "0":
                     num_10 += 1
-                if src_dir_1 == "1" and predict_cla == "1":
+                elif str(src_dir_1) == "1" and str(predict_cla) == "1":
                     num_11 += 1
                 print(num, img_path, src_dir_1, predict_cla)
                 #
@@ -94,7 +94,7 @@ def main():
     f = open(save_path, "w", encoding="utf-8")
     f.write(s)
     f.close()
-    s2 = "00;{}\n01:{}\n10:{}\n:11:{}".format(num_00, num_01, num_10, num_11)
+    s2 = "00:{}\n01:{}\n10:{}\n11:{}".format(num_00, num_01, num_10, num_11)
 
     save_path = "summary_results.txt"
     f = open(save_path, "w", encoding="utf-8")
