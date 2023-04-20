@@ -132,7 +132,6 @@ def read_pickle(file_name: str) -> list:
         info_list = pickle.load(f)
         return info_list
 
-
 def train_one_epoch(model, optimizer, data_loader, device, epoch):
     model.train()
     loss_function = torch.nn.CrossEntropyLoss(weight=torch.tensor([0.1, 0.9]).cuda())
