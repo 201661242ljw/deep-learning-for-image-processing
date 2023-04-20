@@ -72,7 +72,7 @@ def main():
 
     # change fc layer structure
     in_channel = net.fc.in_features
-    net.fc = nn.Linear(in_channel, 5)
+    net.fc = nn.Linear(in_channel, 2)
     net.to(device)
 
     # define loss function
