@@ -11,7 +11,23 @@ import torch.optim.lr_scheduler as lr_scheduler
 from model import efficientnet_b0 as create_model
 from my_dataset import MyDataSet
 from utils import  train_one_epoch, evaluate
-from pytorch_classification.swin_transformer.utils import read_split_data
+# from pytorch_classification.swin_transformer.utils import read_split_data
+def read_split_data(root):
+    train_images_path = []  # 存储训练集的所有图片路径
+    train_images_label = []  # 存储训练集图片对应索引信息
+    val_images_path = []  # 存储验证集的所有图片路径
+    val_images_label = []  # 存储验证集图片对应索引信息
+    src_dir = os.path.join(root, "train")
+    for src_dir_1 in os.listdir(src_dir):
+        for file_name in os.listdir(os.path.join(src_dir, src_dir_1)):
+            train_images_path.append(os.path.join(src_dir, src_dir_1, file_name))
+            train_images_label.append(int(src_dir_1))
+    src_dir = os.path.join(root, "val")
+    for src_dir_1 in os.listdir(src_dir):
+        for file_name in os.listdir(os.path.join(src_dir, src_dir_1)):
+            val_images_path.append(os.path.join(src_dir, src_dir_1, file_name))
+            val_images_label.append(int(src_dir_1))
+    return train_images_path, train_images_label, val_images_path, val_images_label
 
 
 def main(args):
