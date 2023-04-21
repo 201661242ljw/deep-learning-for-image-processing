@@ -11,7 +11,7 @@ import torch.optim.lr_scheduler as lr_scheduler
 from model import densenet121, load_state_dict
 from my_dataset import MyDataSet
 from utils import  train_one_epoch, evaluate
-from ..swin_transformer.utils import read_split_data
+from pytorch_classification.swin_transformer.utils import read_split_data
 
 
 def main(args):
